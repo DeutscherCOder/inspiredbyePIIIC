@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epic Games - Sample Site</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">EPIC GAMES</div>
+    <nav>
+      <a href="#">Store</a>
+      <a href="#">News</a>
+      <a href="#">FAQ</a>
+      <a href="#">Help</a>
+      <a href="#">Unreal Engine</a>
+    </nav>
+    <button class="sign-in">Sign In</button>
+  </header>
+  <main>
+    <section class="banner">
+      <img src="assets/epic-banner.jpg" alt="Epic Banner">
+      <div class="banner-text">
+        <h1>Discover Amazing Games</h1>
+        <p>Play, create, and connect on the Epic Games Store.</p>
+        <button>Browse Games</button>
+      </div>
+    </section>
+    <section class="featured">
+      <h2>Featured Games</h2>
+      <div class="games-list">
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Fortnite</h3>
+        </div>
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Rocket League</h3>
+        </div>
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Fall Guys</h3>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Epic Games Sample. Not affiliated with Epic Games.</p>
+  </footer>
+</body>
+</html>
