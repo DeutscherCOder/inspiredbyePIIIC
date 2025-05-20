@@ -1,52 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epic Games - Sample Site</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epic Games - Sample Site</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">EPIC GAMES</div>
-        <nav>
-            <a href="#">Store</a>
-            <a href="#">News</a>
-            <a href="#">FAQ</a>
-            <a href="#">Help</a>
-            <a href="#">sigmal Engine</a>
-        </nav>
-        <button class="sign-in">Sign In</button>
-    </header>
-    <main>
-        <section class="banner">
-            <img src="epic-banner.jpg" alt="Epic Banner">
-            <div class="banner-text">
-                <h1>Discover Amazing Games</h1>
-                <p>Play, create, and connect on the Epic Games Store.</p>
-                <button>Browse Gamis</button>
-            </div>
-        </section>
-        <section class="featured">
-            <h2>Feataured Games</h2>
-            <div class="games-list">
-                <div class="game-card">
-                    <div class="game-img"></div>
-                    <h3>Fortnite</h3>
-                </div>
-                <div class="game-card">
-                    <div class="game-img"></div>
-                    <h3>Rocket League</h3>
-                </div>
-                <div class="game-card">
-                    <div class="game-img"></div>
-                    <h3>Fall Guys</h3>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Epic Games Sample. Not affiliated with Epic Games.</p>
-    </footer>
+  <header>
+    <div class="logo">EPIC GAMES</div>
+    <nav>
+      <a href="#">Store</a>
+      <a href="#">News</a>
+      <a href="#">FAQ</a>
+      <a href="#">Help</a>
+      <a href="#">Unreal Engine</a>
+    </nav>
+    <button class="sign-in">Sign In</button>
+  </header>
+  <main>
+    <section class="banner">
+      <img src="epic-banner.jpg" alt="Epic Banner">
+      <div class="banner-text">
+        <h1>Discover Amazing Games</h1>
+        <p>Play, create, and connect on the Epic Games Store.</p>
+        <button>Browse Games</button>
+      </div>
+    </section>
+    <section class="featured">
+      <h2>Featured Games</h2>
+      <div class="games-list">
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Fortnite</h3>
+        </div>
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Rocket League</h3>
+        </div>
+        <div class="game-card">
+          <div class="game-img"></div>
+          <h3>Fall Guys</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="counter-section">
+      <h2>Counter Control</h2>
+      <div class="counter-display" id="counter">0</div>
+      <div class="counter-buttons">
+        <button onclick="changeCounter(1)">Add</button>
+        <button onclick="changeCounter(-1)">Subtract</button>
+        <button onclick="resetCounter()">Reset</button>
+      </div>
+      <div class="cmd-section">
+        <input type="text" id="cmdInput" placeholder="Type a command (add, subtract, reset, set 42)" onkeydown="if(event.key==='Enter'){runCmd();}">
+        <button onclick="runCmd()">Run</button>
+      </div>
+      <div id="cmdResult" class="cmd-result"></div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Epic Games Sample. Not affiliated with Epic Games.</p>
+  </footer>
+  <script>
+    let count = 0;
+    const counterEl = document.getElementById('counter');
+    const cmdResult = document.getElementById('cmdResult');
+
+    function updateCounter() {
+      counterEl.textContent = count;
+    }
+
+    function changeCounter(val) {
+      count += val;
+      updateCounter();
+      cmdResult.textContent = '';
+    }
+
+    function resetCounter() {
+      count = 0;
+      updateCounter();
+      cmdResult.textContent = '';
+    }
+
+    function runCmd() {
+      const input = document.getElementById('cmdInput').value.trim().toLowerCase();
+      if (input === 'add') {
+        changeCounter(1);
+        cmdResult.textContent = 'Added 1.';
+      } else if (input === 'subtract') {
+        changeCounter(-1);
+        cmdResult.textContent = 'Subtracted 1.';
+      } else if (input === 'reset') {
+        resetCounter();
+        cmdResult.textContent = 'Counter reset.';
+      } else if (input.startsWith('set ')) {
+        const num = parseInt(input.split(' ')[1]);
+        if (!isNaN(num)) {
+          count = num;
+          updateCounter();
+          cmdResult.textContent = `Counter set to ${num}.`;
+        } else {
+          cmdResult.textContent = 'Invalid number.';
+        }
+      } else {
+        cmdResult.textContent = 'Unknown command.';
+      }
+      document.getElementById('cmdInput').value = '';
+    }
+  </script>
 </body>
 </html>
